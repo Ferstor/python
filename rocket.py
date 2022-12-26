@@ -1,5 +1,4 @@
 import math
-import numpy
 import matplotlib.pyplot as mpp
 
 MODEL_G = 9.81
@@ -43,12 +42,8 @@ class Rocket(Body):
         self.v = v
 
     def advance(self):
-        
-        self.trajectory_x.append(self.x)
-        self.trajectory_y.append(self.y)
-        
-        self.x += self.vx * MODEL_DT
-        self.y += self.vy * MODEL_DT
+        super().advance()
+
         if self.m > 10:
             F = MODEL_M * self.v / MODEL_DT
             self.a = F / self.m
@@ -59,11 +54,12 @@ class Rocket(Body):
         self.m -= MODEL_M      
 
         
-R = Rocket(0,0,5,0,30,0,40)
-B = Body(0,0,0,0)
+R = Rocket(0,0,5,0,30,0,80)
+B = Body(0,0,5,0)
 
 for a in range(10000):
     R.advance()
     B.advance()
+
 R.plot()
 B.plot()
