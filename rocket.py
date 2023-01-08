@@ -53,9 +53,9 @@ class Rocket(Body):
         
 R = Rocket(0, 0, 5, 0, 30, 0, 80)
 B = Body(0, 0, 5, 0)
-objects = (R, B)
+bodies = [B, R]
 
 for a in range(6000):
-    for b in objects:
+    for b in bodies:
         b.advance()
         mpp.plot(b.trajectory_x, b.trajectory_y)
