@@ -5,6 +5,7 @@ MODEL_G = 9.81
 MODEL_DT = 0.001
 MODEL_M = 0.01
 
+
 class Body:
     def __init__(self, x, y, vx, vy):
 
@@ -26,20 +27,16 @@ class Body:
         self.y += self.vy * MODEL_DT
         self.vy -= MODEL_G * MODEL_DT
 
-    def plot(self):
-         mpp.plot(self.trajectory_x,self.trajectory_y)
-         mpp.show()
-
-
 
 class Rocket(Body):
 
-    def __init__(self,x,y,vx,vy,m,a,v):
-        super().__init__(x,y,vx,vy)
+    def __init__(self, x, y, vx, vy, m, a, v):
+        super().__init__(x, y, vx, vy)
 
         self.m = m
         self.a = a
         self.v = v
+
 
     def advance(self):
         super().advance()
@@ -54,12 +51,11 @@ class Rocket(Body):
         self.m -= MODEL_M      
 
         
-R = Rocket(0,0,5,0,30,0,80)
-B = Body(0,0,5,0)
+R = Rocket(0, 0, 5, 0, 30, 0, 80)
+B = Body(0, 0, 5, 0)
+objects = (R, B)
 
-for a in range(10000):
-    R.advance()
-    B.advance()
-
-R.plot()
-B.plot()
+for a in range(6000):
+    for b in objects:
+        b.advance()
+        mpp.plot(b.trajectory_x, b.trajectory_y)
