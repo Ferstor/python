@@ -1,7 +1,7 @@
-def gcd (a,b: int) -> int:
+def gcd (a: int, b: int) -> int:
     if b == 0: 
         return a
     else:
         return gcd(b, a % b)
-GCD = gcd(100, 10.1)
+GCD = gcd(100.2, 'a')
 print(GCD)
