@@ -51,7 +51,7 @@ class Rocket(Body):
         self.m -= MODEL_M      
 
         
-R = Rocket(0, 0, 5, 0, 30, 0, 100)
+R = Rocket(0, 0, 5, 0, 30, 0, 80)
 B = Body(0, 0, 5, 0)
 bodies = [B, R]
 
