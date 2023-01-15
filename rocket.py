@@ -51,12 +51,13 @@ class Rocket(Body):
         self.m -= MODEL_M      
 
         
-R = Rocket(0, 0, 5, 0, 30, 0, 80)
+R = Rocket(0, 0, 5, 0, 30, 0, 100)
 B = Body(0, 0, 5, 0)
 bodies = [B, R]
 
-for a in range(6000):
+for a in range(10000):
     for b in bodies:
         b.advance()
-mpp.plot(R.trajectory_x, R.trajectory_y, B.trajectory_x, B.trajectory_y)
+for c in bodies:
+    mpp.plot(c.trajectory_x, c.trajectory_y)
 mpp.show()
