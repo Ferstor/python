@@ -1,13 +1,33 @@
-f1 = 1
-f2 = 1
+import itertools
 
-n = int(input("Введите номер числа Фиббоначи:"))
+i = 1
 
-a = 0
-while a < n - 2:
-    f3 = f1 + f2
-    f1 = f2
-    f2 = f3
-    a = a + 1
+class Fib:
 
-print(f"Значение {n}-го числа:", f2)
+    class _Fib_iter:
+        def __init__(self):
+            self.fib = 1
+            self.fibp = 1
+            self.i = 0
+
+        def __next__(self):
+                if self.i < 2:
+                    self.i += 1
+                    return 1
+                else:
+                    temp = self.fib
+                    self.fib = self.fib + self.fibp
+                    self.fibp = temp
+                    self.i += 1
+                    return self.fib
+
+    def __iter__(self):
+        return Fib._Fib_iter()
+
+n = int(input("Введите номер чиала Фибоначчи: "))
+f = Fib()
+
+while i <= n:
+    for g in itertools.islice(f, n):
+        print(f"{i}-ое:", g)
+        i += 1
